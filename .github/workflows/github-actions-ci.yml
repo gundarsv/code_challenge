@@ -1,7 +1,7 @@
-name: GitHub Actions Demo
+name: Challenge CI
 on: [push]
 jobs:
-  Challenge CI:
+  Challenge_CI:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
