@@ -1,0 +1,21 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Challenge CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build and run challenge API
+        run: docker-compose -f docker-compose.yml -d
+      - name: Check running containers
+        run: docker ps -a
+      - uses: actions/checkout@v2
+      - name: Run Selenium hub
+        run: docker-compose -f docker-compose-selenium-hub.yml -d
+      - name: Check running containers
+        run: docker ps -a
+      - uses: actions/checkout@v3
+      - name: Run Integration tests
+        run: docker-compose -f docker-compose-tests.yml -d
+      - name: Check running containers
+        run: docker ps -a
