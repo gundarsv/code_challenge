@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Change wrapper permissions
+        run: chmod +x ./challenge_api/mvnw
       - name: Build and run challenge API
         run: docker-compose -f docker-compose.yml up -d
       - name: Check running containers
