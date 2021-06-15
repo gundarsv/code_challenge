@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  challenge-api:
+    build: ./challenge
+    ports:
+      - "8080:8080"
+    networks:
+      - code-challenge-network
+
+networks:
+  code-challenge-network:
+    name: code_challenge_default

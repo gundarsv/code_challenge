@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.3 (Python 3.9.5 on win32)" generated="20210614 21:59:20.420" rpa="false" schemaversion="2">
+<suite id="s1" name="Code Challenge" source="D:\Projects\challenge\src\test\robot\code_challenge.robot">
+<test id="s1-t1" name="Scenario1">
+<kw name="Open Browser">
+<arg>google.com</arg>
+<arg>Chrome</arg>
+<msg timestamp="20210614 21:59:20.452" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status status="FAIL" starttime="20210614 21:59:20.451" endtime="20210614 21:59:20.452"/>
+</kw>
+<status status="FAIL" starttime="20210614 21:59:20.450" endtime="20210614 21:59:20.452">No keyword with name 'Open Browser' found.</status>
+</test>
+<status status="FAIL" starttime="20210614 21:59:20.422" endtime="20210614 21:59:20.454"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Code Challenge">Code Challenge</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
