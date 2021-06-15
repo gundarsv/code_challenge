@@ -15,6 +15,8 @@ jobs:
         run: docker-compose -f docker-compose-selenium-hub.yml up -d
       - name: Check running containers
         run: docker ps -a
+      - name: Change script permissions
+        run: chmod +x ./integration_tests/scripts/run_tests.sh
       - name: Run Integration tests
         run: docker-compose -f docker-compose-tests.yml up -d
       - name: Check running containers

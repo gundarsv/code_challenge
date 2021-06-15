@@ -4,7 +4,7 @@ FROM amazoncorretto:8u292
 
 WORKDIR /app
 
-CMD ["chmod +x mvnw"]
+CMD ["chmod", "+x", "mvnw"]
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
