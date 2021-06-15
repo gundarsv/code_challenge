@@ -8,6 +8,8 @@ COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN ./mvnw dependency:go-offline
 
+CMD ["chmod +x mvnw"]
+
 COPY src ./src
 
 EXPOSE 8080
