@@ -19,5 +19,8 @@ jobs:
         run: chmod +x ./integration_tests/scripts/run_tests.sh
       - name: Run Integration tests
         run: docker-compose -f docker-compose-tests.yml up
-      - name: Check running containers
-        run: docker ps -a
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: ./integration_tests/reports
