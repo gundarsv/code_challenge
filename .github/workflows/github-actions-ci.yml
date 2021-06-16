@@ -24,4 +24,9 @@ jobs:
       - name: Archive test results
         uses: actions/download-artifact@v2
         with:
-          path: /integration_tests/reports
+          path: ./integration_tests/reports
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: ./integration_tests/reports
