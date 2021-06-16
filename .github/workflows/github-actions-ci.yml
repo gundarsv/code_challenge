@@ -21,5 +21,5 @@ jobs:
         run: docker-compose -f docker-compose-tests.yml up
       - name: Archive code coverage results
       - uses: actions/download-artifact@v2
-          with:
+        with:
             path: ./integration_tests/reports
