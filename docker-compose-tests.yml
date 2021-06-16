@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  integration_tests:
+    build: ./integration_tests
+    environment:
+        REMOTE_URL: http://selenium-hub:4444/wd/hub
+        CHALLENGE_API_URL: http://challenge-api:8080
+    volumes: [
+        "$PWD/integration_tests/suites:/suites",
+        "$PWD/integration_tests/scripts:/scripts",
+        "$PWD/integration_tests/reports:/reports"
+    ]
+    networks:
+      - code-challenge-network
+
+networks:
+  code-challenge-network:
+    external:
+      name: code_challenge_default
+  
