@@ -19,7 +19,9 @@ jobs:
         run: chmod +x ./integration_tests/scripts/run_tests.sh
       - name: Run Integration tests
         run: docker-compose -f docker-compose-tests.yml up
-      - name: Archive code coverage results
+      - name: Display structure after tests
+        run: ls -R
+      - name: Archive test results
         uses: actions/download-artifact@v2
         with:
-          path: ./integration_tests/reports
+          path: /integration_tests/reports
