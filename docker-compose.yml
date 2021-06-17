@@ -1,12 +1,30 @@
 version: "3.9"
 services:
+  postgres-db:
+    image: postgres:9.6
+    environment:
+      POSTGRES_PASSWORD: Secret!1
+      POSTGRES_DB: test_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    networks:
+      - code-challenge-network
   challenge-api:
     build: ./challenge_api
+    environment: 
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/test_database
     ports:
       - "8080:8080"
     networks:
       - code-challenge-network
+    depends_on: 
+      - postgres-db
 
 networks:
   code-challenge-network:
     name: code_challenge_default
+
+volumes:
+      database-data:
