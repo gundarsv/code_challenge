@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Change wrapper permissions
         run: chmod +x ./challenge_api/mvnw
-      - name: Build and run challenge API
+      - name: Build and run code challenge system
         run: docker-compose -f docker-compose.yml up -d
       - name: Check running containers
         run: docker ps -a
