@@ -1,6 +1,6 @@
 *** Settings ***
 Library                           RequestsLibrary
-Test Setup                        Get access token
+Suite Setup                       Get access token
 Suite Setup                       Create Session    challenge_api   ${CHALLENGE_API_URL}
 
 *** Variables ***
@@ -18,11 +18,11 @@ Get access token
     &{headers}=                   Create Dictionary   Content-Type=application/x-www-form-urlencoded
     ${response}=                  POST On Session     identity_session    /connect/token      data=${data}    headers=${headers}
     Should Be Equal As Strings    200   ${response.status_code}
-    ${access_token}               Set Variable  ${response.json()['access_token']}
+    Set Suite Variable	          ${ACCESS_TOKEN}   ${response.json()['access_token']}
 
 *** Test Cases ***
 Create account
     &{data}=                      Create dictionary     id=1    name=Generic Name    phone=999999999    email=genericname@company.com   address=Generic Street 42 Earth     country=Navarro     department=T21R
-    &{headers}=                   Create Dictionary     Authorization=${access_token}
+    &{headers}=                   Create Dictionary     Authorization=${ACCESS_TOKEN}
     ${response}=                  POST On Session   challenge_api  /api/v1/account  json=${data}    headers=${headers}  expected_status=anything                                                                                                      
     Status Should Be              201   ${response.status_code}
