@@ -18,7 +18,7 @@ Get access token
     &{headers}=                   Create Dictionary   Content-Type=application/x-www-form-urlencoded
     ${response}=                  POST On Session     identity_session    /connect/token      data=${data}    headers=${headers}
     Should Be Equal As Strings    200   ${response.status_code}
-    Set Suite Variable	          ${ACCESS_TOKEN}   ${response.json()['access_token']}
+    Set Suite Variable	          ${ACCESS_TOKEN}   Bearer ${response.json()['access_token']}
 
 *** Test Cases ***
 Create account
