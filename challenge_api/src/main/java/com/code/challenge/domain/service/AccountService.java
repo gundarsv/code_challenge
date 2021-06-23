@@ -88,7 +88,7 @@ public class AccountService implements IAccountService {
     @Override
     public ResponseEntity updateAccount(Long id, AccountDTO accountDTO) {
         try {
-            if (id != accountDTO.getId()) {
+            if (id.longValue() != accountDTO.getId().longValue()) {
                 throw new AccountServiceBadRequestException("Id`s must be the same");
             }
 
