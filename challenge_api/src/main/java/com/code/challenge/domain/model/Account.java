@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -16,27 +15,21 @@ public class Account implements Serializable {
     @Column(nullable = false)
     private Long id;
 
-    @Size(min = 3, max = 150)
     @Column(nullable = false, length = 150)
     private String name;
 
-    @Size(min = 9, max = 12)
     @Column(nullable = false, length = 12)
     private Long phone;
 
-    @Size(max = 200)
     @Column(nullable = false, length = 200)
     private String email;
 
-    @Size(max = 200)
     @Column(nullable = true, length = 200)
     private String address;
 
-    @Size(max = 200)
     @Column(nullable = false, length = 56)
     private String country;
 
-    @Size(max = 50)
     @Column(nullable = false, length = 50)
     private String department;
 
@@ -51,10 +44,6 @@ public class Account implements Serializable {
         this.address = address;
         this.country = country;
         this.department = department;
-    }
-
-    public static String getTableName() {
-        return TABLE_NAME;
     }
 
     public Long getId() {

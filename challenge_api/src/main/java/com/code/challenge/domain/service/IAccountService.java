@@ -1,15 +1,18 @@
 package com.code.challenge.domain.service;
 
 import com.code.challenge.presentation.dtos.AccountDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface IAccountService {
-    AccountDTO getAccount(Long id);
+    ResponseEntity getAccount(Long id);
 
-    AccountDTO addAccount(AccountDTO accountDTO);
+    ResponseEntity addAccount(AccountDTO accountDTO);
 
-    AccountDTO deleteAccount(Long id);
+    ResponseEntity deleteAccount(Long id);
 
-    AccountDTO updateAccount(Long id, AccountDTO accountDTO);
+    ResponseEntity updateAccount(Long id, AccountDTO accountDTO);
+
+    ResponseEntity getAccounts();
 }
