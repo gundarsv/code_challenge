@@ -30,7 +30,7 @@ services:
       - code-challenge-network
     depends_on: 
       - postgres-db
-      - challenge_identity
+      - challenge-identity
   # challenge-web:
   #   build: ./challenge_web
   #   volumes:
