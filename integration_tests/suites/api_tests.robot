@@ -11,7 +11,8 @@ ${GRANT_TYPE}               %{GRANT_TYPE}
 
 *** Test Cases ***
 Auth
-    &{data}=                Create Dictionary    client_id=${CLIENT_ID}     client_secret=${CLIENT_SECRET}    scope=${SCOPE}    grant_type=${GRANT_TYPE} 
-    &{headers}=             Create Dictionary    Content-Type=application/x-www-form-urlencoded
-    ${response}=            POST  ${CHALLENGE_API_URL}  /connect/token  data=${data}    headers=${headers}
+    Create Session          identity_session    ${IDENTITY_SERVER_URL}
+    &{data}=                Create Dictionary   client_id=${CLIENT_ID}     client_secret=${CLIENT_SECRET}    scope=${SCOPE}    grant_type=${GRANT_TYPE} 
+    &{headers}=             Create Dictionary   Content-Type=application/x-www-form-urlencoded
+    ${response}=            POST On Session     identity_session    /connect/token      data=${data}    headers=${headers}
     Log                     ${response}
