@@ -1,7 +1,7 @@
 *** Settings ***
 Library                           RequestsLibrary
 Suite Setup                       Get access token
-Suite Setup                       Create Session    challenge_api   ${CHALLENGE_API_URL}
+Test Setup                        Create Session    challenge_api   ${CHALLENGE_API_URL}
 
 *** Variables ***
 ${CHALLENGE_API_URL}              %{CHALLENGE_API_URL}
