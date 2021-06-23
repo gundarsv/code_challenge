@@ -5,4 +5,4 @@ RUN apt-get update \
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
-CMD ["run_tests.sh"]
+CMD ["/scripts/run_tests.sh"]
