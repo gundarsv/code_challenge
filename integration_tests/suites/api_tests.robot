@@ -17,7 +17,7 @@ Get access token
     &{data}=                      Create Dictionary   client_id=${CLIENT_ID}     client_secret=${CLIENT_SECRET}    scope=${SCOPE}    grant_type=${GRANT_TYPE} 
     &{headers}=                   Create Dictionary   Content-Type=application/x-www-form-urlencoded
     ${response}=                  POST On Session     identity_session    /connect/token      data=${data}    headers=${headers}
-    Should Be Equal As Strings    200   ${response}
+    Status Should Be              200   ${response}
     Set Suite Variable	          ${ACCESS_TOKEN}   Bearer ${response.json()['access_token']}
 
 *** Test Cases ***
