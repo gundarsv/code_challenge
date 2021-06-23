@@ -18,7 +18,7 @@ Get access token
     &{headers}=                   Create Dictionary   Content-Type=application/x-www-form-urlencoded
     ${response}=                  POST On Session     identity_session    /connect/token      data=${data}    headers=${headers}
     Should Be Equal As Strings    200   ${response.status_code}
-    ${access_token}               Set Variable  ${resp.json()['access_token']}
+    ${access_token}               Set Variable  ${response.json()['access_token']}
 
 *** Test Cases ***
 Create account
