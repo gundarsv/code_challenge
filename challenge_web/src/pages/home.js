@@ -84,8 +84,6 @@ function Home() {
 
       <Container>
         <Table columns={columns} data={data} />
-        <label htmlFor="name-input">Name</label>
-        <input id="name-input"></input>
       </Container>
     </div>
   );

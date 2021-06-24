@@ -5,6 +5,7 @@ services:
     environment:
         REMOTE_URL: http://selenium-hub:4444/wd/hub
         CHALLENGE_API_URL: http://challenge-api:8080
+        CHALLENGE_WEB_URL: http://challenge-web:3000
         IDENTITY_SERVER_URL: http://challenge-identity:80
         CLIENT_ID: robot-framework
         CLIENT_SECRET: secret

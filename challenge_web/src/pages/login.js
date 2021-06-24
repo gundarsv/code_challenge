@@ -13,13 +13,15 @@ function Login() {
   return user ? (
     <Redirect to={"/"} />
   ) : (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h1>Hello!</h1>
       <p>Start by signing in.</p>
       <strong>Tip: </strong>
       <em>User: 'alice', Pass: 'alice'</em>
 
-      <button onClick={() => login()}>Login</button>
+      <button id="login-button" onClick={() => login()}>
+        Login
+      </button>
     </div>
   );
 }

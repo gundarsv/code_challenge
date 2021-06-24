@@ -30,14 +30,10 @@ namespace challenge_identity
 
             services.AddControllersWithViews();
 
-            var builder = services.AddIdentityServer(options =>
-            {
-                options.AccessTokenJwtType = "jwt";
-                options.IssuerUri = "http://challenge-identity:80";
-            })
+            var builder = services.AddIdentityServer(Configuration.GetSection("IdentityServer:Options"))
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryClients(Config.Clients)
+                .AddInMemoryClients(Configuration.GetSection("IdentityServer:Clients"))
                 .AddTestUsers(TestUsers.Users);
 
             builder.AddDeveloperSigningCredential();
