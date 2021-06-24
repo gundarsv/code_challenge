@@ -1,5 +1,39 @@
 # Code challenge system
 
+Requirements:
+
+* Docker
+
+To run the application:
+
+1. Clone the repository
+2. Go to cloned repository ```./code_challenge```.
+3. Execute ```ASPNETCORE_ENVIRONMENT=docker docker-compose up -d```
+
+Access the frontend by going to ```http://localhost:3000```
+
+To access the API access token needs to be retreived.
+
+1. Do ```curl -d "client_id=robot-framework&client_secret=secret&scope=challengeapi&grant_type=client_credentials" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:5000/connect/token```
+
+#### GET Requests
+
+* Do  ```curl -H "Authorization: Bearer {access_token}" http://localhost:8080/api/v1/account``` to return a list of all accounts.  
+  
+* Do  ```curl -H "Authorization: Bearer {access_token}" http://localhost:8080/api/v1/account/{id}``` to return account with specified id.  
+
+#### POST Requests
+
+* Do  ```curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer {access_token}"  -d '{"id":1,"name":"dsadasd","phone":999999999, "email":"test@test","address":"test","country":"test","department":"test"}' http://localhost:8080/api/v1/account``` to add account.
+
+#### PUT Requests
+
+* Do  ```curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer {access_token}" -d '{"id":1,"name":"dsadasd","phone":999999999, "email":"test@test","address":"test","country":"test","department":"test"}' http://localhost:8080/api/v1/account/{id}``` to update the account with id.
+  
+#### DELETE Requests
+
+* Do  ```curl -X DELETE -H "Authorization: Bearer {access_token}" http://localhost:8080/api/v1/account/{id}``` to delete account with id.
+
 ## System structure
 
 ``` bash
