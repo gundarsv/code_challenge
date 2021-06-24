@@ -18,6 +18,8 @@ services:
       - "5001:443"
     networks:
       - code-challenge-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=$ASPNETCORE_ENVIRONMENT
   challenge-api:
     build: ./challenge_api
     environment: 
@@ -31,20 +33,28 @@ services:
     depends_on: 
       - postgres-db
       - challenge-identity
-  # challenge-web:
-  #   build: ./challenge_web
-  #   volumes:
-  #     - './:/challenge_web'
-  #     - '/challenge_web/node_modules'
-  #   ports:
-  #     - "3000:3000"
-  #   stdin_open: true
-  #   environment:
-  #     - CHOKIDAR_USEPOLLING=true
-  #   networks:
-  #     - code-challenge-network
-  #   depends_on: 
-  #     - challenge-api
+  challenge-web:
+    build: ./challenge_web
+    volumes:
+      - './:/challenge_web'
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_API_URI_LOCAL=http://localhost:8080
+      - REACT_APP_IDENTITY_URI_LOCAL=http://localhost:5000
+      - REACT_APP_REDIRECT_URI_LOCAL=http://localhost:3000/signin-oidc
+      - REACT_APP_POST_LOGOUT_REDIRECT_URI_LOCAL=http://localhost:3000/signout-oidc
+      - REACT_APP_API_URI_SELENIUM=http://challenge-api:8080
+      - REACT_APP_IDENTITY_URI_SELENIUM=http://challenge-identity:80
+      - REACT_APP_REDIRECT_URI_SELENIUM=http://challenge-web:3000/signin-oidc
+      - REACT_APP_POST_LOGOUT_REDIRECT_URI_SELENIUM=http://challenge-web:3000/signout-oidc
+      - REACT_APP_ENV=$REACT_APP_ENV
+    networks:
+      - code-challenge-network
+    depends_on: 
+      - challenge-api
 
 networks:
   code-challenge-network:
