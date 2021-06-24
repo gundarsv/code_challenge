@@ -44,5 +44,7 @@ Can login and see accounts
     Input Text                id=Password    alice
     Click Element	          //html/body/div[2]/div/div[2]/div/div/div[2]/form/button[1]
     Wait Until Page Contains  Alice     timeout=5
+    Capture Page Screenshot   ${OUTPUTDIR}/can-login-and-see-accounts/see-alice.png
     Wait Until Page Contains  ${ID}     timeout=5
+    Capture Page Screenshot   ${OUTPUTDIR}/can-login-and-see-accounts/see-id.png
     Close Browser

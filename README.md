@@ -75,8 +75,8 @@ steps:
       - uses: actions/checkout@v1
       - name: Change wrapper permissions
         run: chmod +x ./challenge_api/mvnw
-      - name: Build and run code challenge system - "Run system docker-compose"
-        run: docker-compose -f docker-compose.yml up -d
+      - name: Build and run code challenge system - "Run system"
+        run: ASPNETCORE_ENVIRONMENT=selenium REACT_APP_ENV=selenium docker-compose up -d
       - name: Check running containers
         run: docker ps -a
       - name: Run Selenium hub - "Run selenium hub with all nodes"
